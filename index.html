@@ -1,441 +1,496 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Michael Terrefortes Rosado</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+<html>
+  <head>
 
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Load Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  </head>
+  <body class="flex justify-center h-screen">
 
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+    <div id="profileDiv" class="block lg:w-[50%] md:w-[70%] px-5">
 
-  <!-- =======================================================
-    Theme Name: DevFolio
-    Theme URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-</head>
+       <!-- Name Section -->
+      <div class="pt-3 pb-5 flex flex-row items-center">
 
-<body id="page-top">
+        <img src="img/me.jpeg" 
+          style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; object-position: center;" 
+          alt="Personal Photo" />
 
-  <!--/ Nav Star /-->
-  <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-    <div class="container">
 
-      <a class="navbar-brand js-scroll" href="#page-top">MT</a>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link js-scroll active" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#service">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#work">Portfolio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#contact">Contact</a>
-          </li>
-        </ul>
+          <h1 class="font-semibold text-2xl ml-3">
+          Michael Terrefortes Rosado
+          </h1>
+
       </div>
-    </div>
-  </nav>
-  <!--/ Nav End /-->
 
-  <!--/ Intro Skew Star /-->
-<section id="intro">
-  <div id="home" class="intro route bg-image" style="background-image: url(img/intro-bg.jpg)">
-    <div class="overlay-itro"></div>
-    <div class="intro-content display-table">
-      <div class="table-cell">
-        <div class="container">
-          <!--<p class="display-6 color-d">Hello, world!</p>-->
-          <h1 class="intro-title mb-4">I am Michael H. Terrefortes Rosado</h1>
-          <p class="intro-subtitle"><span class="text-slider-items">Developer, Programmer</span><strong class="text-slider"></strong></p>
-          <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+       <!-- Nav Section -->
 
-          <ul class="intro-social">        
-       
-         <li><a href="https://github.com/michaelterrefortes"><i class="fa fa-github"></i></a></li>
-         <li><a href="http://linkedin.com/in/michael-terrefortes-38a078207"><i class="fa fa-linkedin"></i></a></li>
-         </ul> <!-- /intro-social -->        
+      <div>
+         <button class="border-b-2 border-black pb-5 mr-5 font-semibold ">Profile</button>
+         <button onclick="disableProfile()" class="pb-5 text-gray-400 font-semibold hover:text-black">Contact</button>
+      </div>
 
+      <hr>
+
+       <!-- About Section -->
+
+      <div class="mt-8">
+        <p class="text-xl font-semibold text-gray-500">About</p>
+
+        <p class="mt-3">
+
+          Computer Science graduate with a B.S. and M.S. from the University of Puerto Rico, Rio Piedras Campus, specializing in software development and data-driven systems. Experienced in full-stack development, and applied research in biostatistics and public health.
+        </p>
+
+        <div class="flex flex-row mt-4">
+          <div class="flex flex-row items-center">
+            <img  style="width: 20px; height: 20px;" 
+            src="/img/icons/location-pin-alt-1-svgrepo-com.svg"/>
+          <p class="text-gray-400 ml-1 mr-8">Puerto Rico</p>
+          </div>
+          <div  class="flex flex-row items-center">
+           <img  style="width: 20px; height: 20px;" 
+            src="/img/icons/calendar-svgrepo-com.svg"/>
+          <p class="text-gray-400 ml-1">Available for work</p>
+        </div>
         </div>
       </div>
-    </div>
-  </div>
 
-   
-  </section>
+       <!-- Experiences Section -->
+      <div class="mt-16">
+          <p class="text-xl font-semibold text-gray-500">Experience</p>
 
-  <!--/ Intro Skew End /-->
+          <!-- Experiences Cards -->
+          <div class="mt-5">
+            <div class="flex flex-row items-center justify-between">
+              <p class="text-xl">Research/Teaching Assistant</p>
+              <p class="text-gray-400">Aug 2023 - Dec 2025</p>
+            </div>
+            <p class="mt-2 text-lg text-gray-400">University of Puerto Rico, Rio Piedras Campus - San Juan, PR</p>
+            <ul class="mt-2 text-gray-500 list-disc list-inside space-y-1">
+              <li>
+                Developed interactive data visualization dashboards using Python and Plotly to analyze and binarize gene expression data for computational biology research.
+              </li>
+              <li>
+                Enabled visualization of Boolean gene networks to improve accessibility of biological data analysis.
+              </li>
+              <li>
+                Supported undergraduate CS courses by grading assignments and providing detailed technical feedback.
+              </li>
+              <li>
+                Reinforced student understanding of programming, data structures, and core computer science concepts.
+              </li>
+            </ul>
 
-  <section id="about" class="about-mf sect-pt4 route">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="box-shadow-full">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="col-sm-6 col-md-5">
-                    <div class="about-img">
-                      <img src="img/testimonial-2.jpg" class="img-fluid rounded b-shadow-a" alt="">
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-7">
-                    <div class="about-info">
-                      <p><span class="title-s">Name: </span> <span>Michael Terrefortes Rosado</span></p>
-                      <p><span class="title-s">Education: </span> <span> 
-                        <br>
-                        - Bachelor of Science in Computer Science, University of Puerto Rico, R&iacute;o Piedras Campus
-                        <br>  - Master of Science in Computer Science, University of Puerto Rico, R&iacute;o Piedras Campus
-                      </span></p>
-                      <p><span class="title-s">Email: </span> <span>michaelterrefortes@gmail.com</span></p>
-                    </div>
+          </div>
+
+          <div class="mt-5">
+            <div class="flex flex-row items-center justify-between">
+              <p class="text-xl">Biostatistics Research Intern</p>
+              <p class="text-gray-400">June 2023 - July 2023</p>
+            </div>
+            <p class="mt-2 text-lg text-gray-400">New York University, School of Global Public Health - NYC, NY</p>
+            <p class="text-lg text-gray-400">Pathways into Quantitative Aging Research Summer Program</p>
+           <ul class="mt-2 text-gray-500 list-disc list-inside space-y-1">
+            <li>
+              Conducted biostatistical research on birth outcomes in sub-Saharan Africa using R and RStudio.
+            </li>
+            <li>
+              Applied statistical methods including optimal matching and randomization inference for causal analysis.
+            </li>
+            <li>
+              Analyzed large-scale epidemiological datasets as part of NIH-funded public health research.
+            </li>
+            <li>
+              Contributed to insights on maternal health risks and population-level birth outcomes.
+            </li>
+            <li>
+              Collaborated with researchers in quantitative aging and global health studies.
+            </li>
+          </ul>
+
+          </div>
+
+          <div class="mt-5">
+            <div class="flex flex-row items-center justify-between">
+              <p class="text-xl">Software Engineer</p>
+              <p class="text-gray-400">Mar 2023 - June 2023</p>
+            </div>
+            <p class="mt-2 text-lg text-gray-400">University of Puerto Rico, Rio Piedras Campus - San Juan, PR</p>
+            <ul class="mt-2 text-gray-500 list-disc list-inside space-y-1">
+              <li>
+                Spearheaded development of a full-stack web and mobile application for the non-profit organization El Puente to support climate law violation reporting in Puerto Rico.
+              </li>
+              <li>
+                Built and integrated frontend and backend systems using HTML, CSS, JavaScript, Flask, and React Native.
+              </li>
+              <li>
+                Developed user-friendly interfaces to enable community-driven environmental reporting and data submission.
+              </li>
+              <li>
+                Collaborated on designing scalable application architecture for cross-platform functionality (web and mobile).
+              </li>
+            </ul>
+
+          </div>
+
+          <div class="mt-5">
+            <div class="flex flex-row items-center justify-between">
+              <p class="text-xl">Biostatistics Research Intern</p>
+              <p class="text-gray-400">June 2022 - July 2022</p>
+            </div>
+            <p class="mt-2 text-lg text-gray-400">Harvard T.H. Chan School of Public Health - Boston, MA</p>
+            <p class=" text-lg text-gray-400">Summer Program in Biostatistics and Computational Biology</p>
+            <ul class="mt-2 text-gray-500 list-disc list-inside space-y-1">
+              <li>
+                Conducted research on the use of antigen home tests for population-level COVID-19 surveillance using R and statistical analysis techniques.
+              </li>
+              <li>
+                Analyzed large public health datasets to evaluate screening effectiveness and support data-driven epidemiological insights.
+              </li>
+              <li>
+                Completed advanced coursework in Biostatistics, Machine Learning, and Computational Biology.
+              </li>
+              <li>
+                Strengthened quantitative research and data analysis skills through collaborative public health research projects.
+              </li>
+            </ul>
+
+          </div>
+
+      </div>
+
+      <!-- Education Section -->
+      <div class="mt-16">
+          <p class="text-xl font-semibold text-gray-500">Education</p>
+
+          <!-- Education Cards -->
+          <div class="mt-5">
+            <div class="flex flex-row items-center justify-between">
+              <p class="text-xl">Master of Science in Computer Science</p>
+              <p class="text-gray-400">Aug 2023 - Dec 2025</p>
+            </div>
+            <p class="mt-2 text-lg text-gray-400">University of Puerto Rico, Rio Piedras Campus</p>
+            <p class="mt-2 text-gray-500">Master Project: An Integrated Tool for Visualization and Analysis of Boolean Networks Representations of Gene Regulatory Networks</p>
+            <p class="mt-2 text-gray-500">Graduated (GPA: 4.0)</p>
+
+          </div>
+
+          <div class="mt-5">
+            <div class="flex flex-row items-center justify-between">
+              <p class="text-xl">Bachelor of Science in Computer Science</p>
+              <p class="text-gray-400">Aug 2018 - May 2023</p>
+            </div>
+            <p class="mt-2 text-lg text-gray-400">University of Puerto Rico, Rio Piedras Campus</p>
+            <p class="mt-2 text-gray-500">Graduated (GPA: 3.67)</p>
+
+          </div>
+
+
+      </div>
+
+       <!-- Skills/Tools Section -->
+      <div class="mt-16">
+          <p class="text-xl font-semibold text-gray-500">Skills & Tools</p>
+
+          <!-- Skill/Tools Cards -->
+          <div class="mt-5">
+           
+            <p class="text-gray-600">Languages</p>
+            
+            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Python</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">C</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">C++</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">HTML</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">JavaScript</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">TypeScript</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">R</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">SQL</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Matlab</p>
+                
+            </div>
+
+          </div>
+
+           <div class="mt-5">
+           
+            <p class="text-gray-600">Framework & Libraries</p>
+            
+            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">React</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">React Native</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Tailwind</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Flask</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Dash</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Numpy & Pandas</p>
+                 
+            </div>
+
+          </div>
+
+           <div class="mt-5">
+           
+            <p class="text-gray-600">Tools & Platforms</p>
+            
+            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">VS Code</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">RStudio</p>
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Github</p>
+                
+            </div>
+
+          </div>
+
+          <div class="mt-5">
+           
+            <p class="text-gray-600">Other</p>
+            
+            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
+                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">English & Spanish</p>
+               
+                
+            </div>
+
+          </div>
+
+      </div>
+
+
+       <!-- Projects Section -->
+      <div class="mt-16">
+          <p class="text-xl font-semibold text-gray-500">Projects</p>
+
+          <!-- Projects Cards -->
+          <div class="flex flex-row flex-wrap justify-between">
+
+              <div class="mt-5 rounded-lg lg:w-[48%] border-2 border-gray-100 transition-transform duration-300 hover:-translate-y-2">
+                <div class="flex justify-center bg-[#f2f2f2]">
+                  <img src="img/monivue1.png" style="width: 126px; height: 273px; align-self: center;"/>
+                  <img src="img/monivue2.png" style="width: 126px; height: 273px; align-self: center;"/>
+                  <img src="img/monivue3.png" style="width: 126px; height: 273px; align-self: center;"/>
+                </div>
+                <div class="p-5">
+                  <p class="text-lg">MoniVue</p>
+                  <p class="text-gray-400 mt-2">A budget manager mobile and web app to track spending, bills, and credit card debt.</p>
+                  <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React</p>
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">TypeScript</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">JavaScript</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Express</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Node.js</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Supabase Auth</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">PostgreSQL</p>
+                      
+                      
                   </div>
                 </div>
-                <div class="skill-mf">
-                  <p class="title-s">Skill</p>
-                  <span>HTML</span> 
-                  <div class="progress">
-                    
-                  </div>
-       
-                  <span>C/C++</span> 
-                  <div class="progress">
-                    
-                  </div>
-                  <span>Python</span> 
-                  <div class="progress">
+              </div>
+
+              <div class="mt-5 rounded-lg lg:w-[48%] border-2 border-gray-100 transition-transform duration-300 hover:-translate-y-2">
+                <div class="flex justify-center bg-[#f2f2f2]">
+                  <img src="img/bookview1.png" style="width: 126px; height: 273px; align-self: center;"/>
+                  <img src="img/bookview2.png" style="width: 126px; height: 273px; align-self: center;"/>
+                  <img src="img/bookview3.png" style="width: 126px; height: 273px; align-self: center;"/>
+                </div>
+                <div class="p-5">
+                  <p class="text-lg">BookView</p>
+                  <p class="text-gray-400 mt-2">A book app to track bookshelfs and current reading. </p>
+                  <p class="text-gray-400 mt-2">In Development</p>
+                  <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
+                     
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">TypeScript</p>
                    
                   </div>
-                  <span>JavaScript</span> 
-                  <div class="progress">
+                </div>
+              </div>
+
+              <div class="mt-5 rounded-lg lg:w-[48%] border-2 border-gray-100 transition-transform duration-300 hover:-translate-y-2">
+                <div>
+                  <img src="img/vibex.jpg" class="rounded-t-lg"/>
+                </div>
+                <div class="p-5">
+                  <p class="text-lg">ViBEx</p>
+                  <p class="text-gray-400 mt-2">Master Project Web Application for the Analysis and Visualization of Boolean Networks of Gene Expressions.
                     
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="about-me pt-4 pt-md-0">
-                  <div class="title-box-2">
-                    <h5 class="title-left">
-                      About me
-                    </h5>
-                  </div>
-                  <p class="lead">
-                    Hi, my name is Michael Terrefortes and I'm a computer scientist. I'm from Puerto Rico and studied at the University of Puerto Rico, R&iacute;o Piedras Campus. 
                   </p>
-                 
-                  <p class="lead">
-                    The programming languages and technologies that I'm most proficient in are C/C++, Python, JavaScript, HTML, CSS. 
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--/ Section Services Star /-->
-  <section id="service" class="services-mf route">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="title-box text-center">
-            <h3 class="title-a">
-              Services
-            </h3>
-            <p class="subtitle-a">
-              This are the services that I can offer. 
-            </p>
-            <div class="line-mf"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-monitor"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Web Development</h2>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-code-working"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Development</h2>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-iphone"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Programming</h2>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ Section Services End /-->
-
-   <!-- ======= Portfolio Section ======= -->
-   <section id="work" class="portfolio-mf sect-pt4 route">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="title-box text-center">
-            <h3 class="title-a">
-              Portfolio
-            </h3>
-            <p class="subtitle-a">
-              This section is my portfolio of projects.
-            </p>
-            <div class="line-mf"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/aco.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-              <div class="work-img">
-                <img src="img/vibex.jpg" alt="" class="img-fluid">
-              </div>
-            </a>
-            <div class="work-content">
-              <div class="row">
-                <div class="col-sm-8">
-                  <h2 class="w-title"> <a href="https://fury.hpcf.upr.edu/vibex/">
-                    ViBEx
-                  </a></h2>
-                  <div class="w-more">  Interactive Application for the analysis and visualization of gene expressions and Boolean Networks. Developed using Python and Dash library for 
-                    dashboard application development. 
-                    <span class="w-ctegory">Programming & Development</span> / <span class="w-date">Dec 2025</span>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="w-like">
-                    <a href=""> <span class="bi bi-plus-circle"></span></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/aco.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-              <div class="work-img">
-                <img src="img/aco.jpg" alt="" class="img-fluid">
-              </div>
-            </a>
-            <div class="work-content">
-              <div class="row">
-                <div class="col-sm-8">
-                  <h2 class="w-title">
-                    ACO Application
-                  </a></h2>
-                  <div class="w-more"> Application developed for El Puente organization to allows users to report
-                    climate law violations on the island. These violations are saved in a database and sent to the proper authorities.
-                    The users can create an account, make law violations, see local laws, and environmental analysis tools, and see a list of
-                    uploaded violations in the database. Developed using React Native, JS, Python for API. 
-                    <span class="w-ctegory">Programming & Development</span> / <span class="w-date">Dec 2022</span>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="w-like">
-                    <a href="https://git.ccom.uprrp.edu/michael.terrefortes/ACO-APP"> <span class="bi bi-plus-circle"></span></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/databaseProject.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-              <div class="work-img">
-                <img src="img/databaseProject.jpg" alt="" class="img-fluid">
-              </div>
-            </a>
-            <div class="work-content">
-              <div class="row">
-                <div class="col-sm-8">
-                  <h2 class="w-title"> <a href="https://ada.uprrp.edu/~michael.terrefortes/home.php">
-                    Webpage to add products, clients and orders to database
-                  </a></h2>
-                  <div class="w-more"> Webpage to add products, clients and orders to a database. 
-                          The purpose is to give a small company with no modernation to be able 
-                          to log their orders and clients and become tech friendly. 
-                    <span class="w-ctegory">Web Design & Development</span> / <span class="w-date">May 2021</span>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="w-like">
-                    <a href="https://ada.uprrp.edu/~michael.terrefortes/home.php/"> <span class="bi bi-plus-circle"></span></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/redditAnalyzer.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-              <div class="work-img">
-                <img src="img/redditAnalyzer.jpg" alt="" class="img-fluid">
-              </div>
-            </a>
-            <div class="work-content">
-              <div class="row">
-                <div class="col-sm-8">
-                  <h2 class="w-title">
-                    <a href="https://redditanalisys.herokuapp.com/">
-                      Reddit Sentimental Analysis </a> </h2>
-                  <div class="w-more">
-                    This project was made in a group collaboration in order to see how positive, negative or
-                    neutral are different subreddits.
-                    <span class="w-ctegory">Web Design & Development</span> / <span class="w-date">Dec. 2021</span>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="w-like">
-                    <a href="https://redditanalisys.herokuapp.com/"> <span class="bi bi-plus-circle"></span></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section><!-- End Portfolio Section -->
-
-  
-
-  <!--/ Section Contact-Footer Star /-->
-  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(img/intro-bg.jpg)">
-    <div class="overlay-mf"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="contact-mf">
-            <div id="contact" class="box-shadow-full">
-              <div class="row">
-               
-                <div class="col-md-6">
-                  <div class="title-box-2 pt-4 pt-md-0">
-                    <h5 class="title-left">
-                      Get in Touch
-                    </h5>
-                  </div>
-                  <div class="more-info">
-                    <p class="lead">
-                      You can get in touch with me with the following email address. 
-                    </p>
-                    <ul class="list-ico">
+                  
+                  <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">Python</p>
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">C</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Dash</p>
                       
-                      <li><span class="ion-email"></span> michaelterrefortes@gmail.com</li>
-                    </ul>
-                  </div>
-                  <div class="socials">
-                    <ul>
-                      <li><a href="https://github.com/michaelterrefortes"><span class="ico-circle"><i class="ion-social-github"></i></span></a></li>
-                      <li><a href="http://linkedin.com/in/michael-terrefortes-38a078207"><span class="ico-circle"><i class="ion-social-linkedin"></i></span></a></li>
-                    </ul>
+    
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="copyright-box">
-              <p class="copyright">&copy; Copyright <strong>DevFolio</strong>. All Rights Reserved</p>
-              <div class="credits">
-                <!--
-                  All the links in the footer should remain intact.
-                  You can delete the links only if you purchased the pro version.
-                  Licensing information: https://bootstrapmade.com/license/
-                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=DevFolio
-                -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+
+              <div class="mt-5 rounded-lg lg:w-[48%] border-2 border-gray-100 transition-transform duration-300 hover:-translate-y-2">
+                <div>
+                  <img src="img/siemprevivas.png" class="rounded-t-lg"/>
+                </div>
+                <div class="p-5">
+                  <p class="text-lg">Siempre Vivas</p>
+                  <p class="text-gray-400 mt-2">A modern interactive website for Siempre Vivas Metro. Developed in collaboration with other collegues.</p>
+                  <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">HTML</p>
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">Python</p>
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">CSS</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">MongoDB</p> 
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <div class="mt-5 rounded-lg lg:w-[48%] border-2 border-gray-100 transition-transform duration-300 hover:-translate-y-2">
+               <div class="flex justify-center">
+                  <img src="img/bussapp.png" style="width: 110px; height: 220px; align-self: center;"/>
+                </div>
+                <div class="p-5">
+                  <p class="text-lg">Trolley ETA at UPRRP</p>
+                  <p class="text-gray-400 mt-2">A mobile application for bus tracking in UPRRP campus. Developed in collaboration with other collegues.</p>
+                  <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
+                   
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">Python</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">JavaScript</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">SQL</p>
+     
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="mt-5 rounded-lg lg:w-[48%] border-2 border-gray-100 transition-transform duration-300 hover:-translate-y-2">
+                <div class="flex justify-center">
+                  <img src="img/aco.jpg" style="width: 110px; height: 220px; align-self: center;"/>
+                </div>
+                <div class="p-5">
+                  <p class="text-lg">ACO</p>
+                  <p class="text-gray-400 mt-2">A mobile application for El Puente non-profit organization for reporting climate law violations in Puerto Rico. Developed in collaboration with other collegues.</p>
+                  <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
+                   
+                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>     
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">JavaScript</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Python</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">PostgreSQL</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">HTML</p>
+                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">CSS</p>
+                      
+                      
+                  </div>
+                </div>
+              </div>
+
+              
+
+          </div>
+
+
+      </div>
+
+    </div>
+
+    <div id="contactDiv" class="hidden lg:w-[50%] md:w-[70%] px-5">
+
+       <!-- Name Section -->
+      <div class="pt-3 pb-5 flex flex-row items-center">
+
+        <img src="img/testimonial-2.jpg" 
+          style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; object-position: center;" 
+          alt="Personal Photo" />
+
+
+          <h1 class="font-semibold text-2xl ml-3">
+          Michael Terrefortes Rosado
+          </h1>
+
+      </div>
+
+      <!-- Nav Section -->
+      <div>
+          <button onclick="disableContact()" class="pb-5 text-gray-400 font-semibold hover:text-black mr-5">Profile</button>
+          <button class="border-b-2 border-black pb-5 font-semibold ">Contact</button>
+      </div>
+
+      <hr>
+
+      <!-- Get in Touch Section -->
+
+      <div class="mt-8">
+        <p class="text-xl font-semibold mb-12 text-gray-500">Get in Touch</p>
+
+        <a href="mailto:michaelterrefortes@gmail.com">
+        <div class="mt-7 w-full border-2 flex flex-row items-center border-gray-100 rounded-xl p-5 hover:bg-gray-100">
+         
+          <div class="bg-[#ececf0] p-3 rounded-full mr-5">
+            <img  style="width: 20px; height: 20px;" 
+          src="/img/icons/email-svgrepo-com.svg"/>
+         </div>
+
+          <div>
+            <p class="text-gray-500">Email</p>
+            <p>michael.terrefortes@gmail.com</p>
           </div>
         </div>
+        </a>
+
+
+        <a href="https://github.com/michaelterrefortes">
+        <div class="mt-7 w-full border-2 flex flex-row items-center border-gray-100 rounded-xl p-5 hover:bg-gray-100">
+           <div class="bg-[#ececf0] p-3 rounded-full mr-5">
+              <img  style="width: 20px; height: 20px;" 
+            src="/img/icons/github-svgrepo-com.svg"/>
+          </div>
+          <div>
+            <p class="text-gray-500">GitHub</p>
+            <p>github.com/michaelterrefortes</p>
+          </div>
+        </div>
+        </a>
+
+
+        <a href="https://linkedin.com/in/michael-h-terrefortes-rosado">
+        <div class="mt-7 w-full border-2 flex flex-row items-center  border-gray-100 rounded-xl p-5 hover:bg-gray-100">
+           <div class="bg-[#ececf0] p-3 rounded-full mr-5">
+              <img  style="width: 20px; height: 20px;" 
+            src="/img/icons/linkedin-svgrepo-com.svg"/>
+          </div>
+          <div>
+            <p class="text-gray-500">LinkedIn</p>
+            <p>linkedin.com/in/michael-h-terrefortes-rosado</p>
+          </div>
+        </div>
+        </a>
+
+        
       </div>
-    </footer>
-  </section>
-  <!--/ Section Contact-footer End /-->
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <div id="preloader"></div>
 
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/popper/popper.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/counterup/jquery.waypoints.min.js"></script>
-  <script src="lib/counterup/jquery.counterup.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="lib/typed/typed.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+    </div>
 
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
 
-</body>
+  </body>
+  <script>
+ 
+    function disableContact() {
+        const div = document.getElementById('contactDiv');
+        const div2 = document.getElementById('profileDiv');
+        div.classList.toggle('hidden');
+        div2.classList.toggle('hidden');
+    }
+
+    function disableProfile() {
+        const div = document.getElementById('profileDiv');
+        const div2 = document.getElementById('contactDiv');
+        div.classList.toggle('hidden');
+        div2.classList.toggle('hidden');
+    }
+    
+  </script>
 </html>
