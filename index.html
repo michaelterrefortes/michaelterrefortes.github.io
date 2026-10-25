@@ -1,92 +1,109 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
-    (function () {
+    (() => {
       const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
       }
     })();
   </script>
- 
   <title>Michael Terrefortes Rosado</title>
-  <!-- Load Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { color-scheme: light; }
+    html { color-scheme: light; scroll-behavior: smooth; }
     html.dark { color-scheme: dark; }
-    body { background-color: #fff; color: #111827; transition: background-color 180ms ease, color 180ms ease; }
-    html.dark body { background-color: #080808; color: #f3f3f3; }
-    html.dark .dark-surface { background-color: #151515 !important; }
-    html.dark .dark-border { border-color: #292929 !important; }
-    html.dark .dark-text { color: #d1d5db !important; }
-    html.dark .dark-muted { color: #9ca3af !important; }
-    html.dark .dark-hover:hover { background-color: #292929 !important; }
-    html.dark .bg-white { background-color: #151515 !important; }
-    html.dark .bg-\[\#ececf0\], html.dark .bg-\[\#f2f2f2\] { background-color: #222 !important; }
+    body { background: #fff; color: #111827; transition: background-color 180ms ease, color 180ms ease; }
+    html.dark body { background: #171717; color: #ededed; }
+    html.dark .bg-white { background: #222 !important; }
     html.dark .border-gray-100, html.dark .border-gray-200 { border-color: #292929 !important; }
-    html.dark .border-black { border-color: #e5e5e5 !important; }
-    html.dark .text-black, html.dark .hover\:text-black:hover { color: #f9fafb !important; }
     html.dark .text-gray-400, html.dark .text-gray-500, html.dark .text-gray-600 { color: #9ca3af !important; }
-    html.dark .hover\:bg-gray-300:hover { background-color: #333 !important; }
-    @media (prefers-reduced-motion: reduce) { body { transition: none; } }
+    :root { --line: #e5e7eb; --soft: #f5f5f5; --muted: #6b7280; --surface: #fff; --chip: #f0f0f0; }
+    html.dark { --line: #393939; --soft: #242424; --muted: #b0b0b0; --surface: #202020; --chip: #2c2c2c; }
+    #app { width: 100%; max-width: 920px; margin: 0 auto; padding: 0 28px 36px; }
+    .site-header { display: flex; align-items: center; gap: 14px; padding: 32px 0 24px; }
+    .site-identity { min-width: 0; }
+    .site-header h1 { font-size: 1.5rem; font-weight: 600; }
+    .site-headline { margin-top: 3px; color: var(--muted); font-size: .9rem; }
+    .resume-link { display: inline-flex; align-items: center; margin-top: 8px; font-size: .85rem; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+    .view-nav { display: flex; align-items: center; gap: 24px; border-bottom: 1px solid #e5e7eb; }
+    html.dark .view-nav { border-color: var(--line); }
+    .view-tab { padding: 0 0 12px; color: #9ca3af; font-size: .9rem; font-weight: 500; }
+    .view-tab[aria-selected="true"] { color: inherit; border-bottom: 2px solid currentColor; font-weight: 600; }
+    .page-view { padding-top: 32px; }
+    .page-view[hidden] { display: none !important; }
+    .profile-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+    .profile-links a, .project-link, #theme-toggle { border: 1px solid var(--line); border-radius: 999px; transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease; }
+    .profile-links a, .project-link { padding: 7px 12px; color: var(--muted); font-size: .85rem; }
+    .profile-links a:hover, .project-link:hover, #theme-toggle:hover { background: var(--soft); color: inherit; }
+    .section-title { font-size: 1.35rem; font-weight: 600; letter-spacing: -.025em; }
+    #about { line-height: 1.75; }
+    #education, #skills { margin-top: 48px; }
+    #experience .experience-entry, #education .education-entry { padding-top: 20px; }
+    #projects .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    #projects .project-card { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); transition: transform 180ms ease, border-color 180ms ease; }
+    #projects .project-card:hover { transform: translateY(-3px); }
+    .project-image { min-height: 180px; display: flex; align-items: center; justify-content: center; gap: 8px; overflow: hidden; background: var(--soft); }
+    .contact-card { display: flex; align-items: center; gap: 18px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); transition: background-color 160ms ease, border-color 160ms ease; }
+    .contact-card:hover { background: var(--soft); }
+    .contact-card > span:last-child, .contact-card > span:last-child > span { display: block; }
+    .contact-icon { display: grid; width: 46px; height: 46px; flex: 0 0 46px; place-items: center; border-radius: 50%; background: var(--chip); }
+    .skill-chip { padding: 6px 11px; border: 1px solid var(--line); border-radius: 999px; background: var(--chip); font-size: .85rem; }
+    .project-link { display: inline-block; color: inherit; }
+    .contact-icon img { width: 20px; height: 20px; }
+    html.dark .contact-icon img { filter: invert(1); }
+    .contact-label { margin-bottom: 3px; color: #9ca3af; font-size: .875rem; }
+    @media (max-width: 640px) {
+      #app { padding: 0 20px 28px; }
+      .site-header h1 { font-size: 1.15rem; }
+      .site-headline { font-size: .8rem; }
+      .site-header > img { width: 56px !important; height: 56px !important; }
+      #theme-label { display: none; }
+      .view-nav { gap: 20px; overflow-x: auto; }
+      .view-tab { white-space: nowrap; }
+      #projects .project-grid { grid-template-columns: 1fr; }
+      .experience-heading, .education-heading { align-items: flex-start; gap: 8px; }
+      .experience-heading > p:first-child, .education-heading > p:first-child { font-size: 1rem; }
+      .experience-heading > p:last-child, .education-heading > p:last-child { text-align: right; font-size: .8rem; white-space: nowrap; }
+      .contact-card { overflow-wrap: anywhere; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
   </style>
-  
-  </head>
-  <body class="flex justify-center min-h-screen pb-5">
-
-   
-
-    <div id="profileDiv" class="block lg:w-[50%] md:w-[70%] px-5">
-      
-
-       <!-- Name Section -->
-      <div class="pt-5 pb-5 flex flex-row items-center">
-
-        <img src="img/me.jpeg" 
-          style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; object-position: center;" 
-          alt="Personal Photo" />
-
-
-          <h1 class="font-semibold text-2xl ml-3">
-          Michael Terrefortes Rosado
-          </h1>
-          <button id="themeToggle" type="button" class="theme-toggle ml-auto rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium hover:bg-gray-100 dark-border dark-hover" aria-label="Switch to dark mode" aria-pressed="false">
-            <span id="themeIcon" aria-hidden="true">☾</span>
-            <span id="themeLabel">Dark mode</span>
-          </button>
-
+</head>
+<body>
+  <main id="app">
+    <header class="site-header">
+      <img src="img/me.jpeg" style="width:70px;height:70px;border-radius:50%;object-fit:cover;object-position:center" alt="Personal photo">
+      <div class="site-identity">
+        <h1>Michael Terrefortes Rosado</h1>
+        <p class="site-headline">Software Engineer · Full-Stack · Data Science &amp; Biostatistics</p>
+        <a class="resume-link" href="https://github.com/michaelterrefortes/Resume/raw/refs/heads/main/MichaelTerrefortes-Resume2026.pdf">Resume</a>
       </div>
-
-       <!-- Nav Section -->
-
-      <div>
-         <button class="border-b-2 border-black pb-5 mr-5 font-semibold ">Profile</button>
-         <button onclick="disableProfile()" class="pb-5 text-gray-400 font-semibold hover:text-black">Contact</button>
-      </div>
-
-      <hr>
-
-      <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2 items-center">
-        
-        <a href="#about" class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">About</a>
-        <a href="#experience" class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">Experience</a>
-        <a href="#education" class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">Education</a>
-        <a href="#skills" class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">Skills & Tools</a>
-        <a href="#projects" class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">Projects</a>
-      </div>
-
-       <!-- About Section -->
-
+      <button id="theme-toggle" type="button" class="ml-auto rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium hover:bg-gray-100" aria-label="Switch to dark mode" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">☾</span> <span id="theme-label">Dark mode</span>
+      </button>
+    </header>
+    <nav class="view-nav" aria-label="Main navigation" role="tablist">
+      <button class="view-tab" type="button" role="tab" id="tab-profile" aria-controls="profile" aria-selected="true" data-view="profile">Profile</button>
+      <button class="view-tab" type="button" role="tab" id="tab-experience" aria-controls="experience" aria-selected="false" data-view="experience">Experience</button>
+      <button class="view-tab" type="button" role="tab" id="tab-projects" aria-controls="projects" aria-selected="false" data-view="projects">Projects</button>
+      <button class="view-tab" type="button" role="tab" id="tab-contact" aria-controls="contact" aria-selected="false" data-view="contact">Contact</button>
+    </nav>
+    <section id="profile" class="page-view" role="tabpanel" aria-labelledby="tab-profile">
+      <nav class="profile-links" aria-label="Profile sections">
+        <a href="#about">About</a>
+        <a href="#skills">Skills &amp; Tools</a>
+        <a href="#education">Education</a>
+      </nav>
       <div id="about" class="mt-8">
-        <p class="text-xl font-semibold text-gray-500">About</p>
+        <h2 class="section-title">About</h2>
 
         <p class="mt-3">
           Computer Science graduate with a B.S. and M.S. in Computer Science from the University of Puerto Rico, Río Piedras Campus. My background combines software engineering, data science, and applied research, with experience developing software applications and working with complex datasets across technical and scientific domains.
+        </p>
         <p class="mt-3">
           I have developed web and mobile applications using a variety of technology stacks, working across frontend and backend development, APIs, databases, and application design. My projects have included full-stack applications, mobile applications, and computational tools built with technologies such as React, React Native, TypeScript, Node.js, Python, C, and SQL.
         </p>
@@ -100,25 +117,127 @@
 
         <div class="flex flex-row mt-4">
           <div class="flex flex-row items-center">
-            <img  style="width: 20px; height: 20px;" 
+            <img  style="width: 20px; height: 20px;"
             src="/img/icons/location-pin-alt-1-svgrepo-com.svg"/>
           <p class="text-gray-400 ml-1 mr-8">Puerto Rico</p>
           </div>
           <div  class="flex flex-row items-center">
-           <img  style="width: 20px; height: 20px;" 
+           <img  style="width: 20px; height: 20px;"
             src="/img/icons/calendar-svgrepo-com.svg"/>
           <p class="text-gray-400 ml-1">Available for work</p>
         </div>
         </div>
       </div>
 
+       <!-- Skills/Tools Section -->
+      <section id="skills">
+          <h2 class="section-title">Skills &amp; Tools</h2>
+
+          <!-- Skill/Tools Cards -->
+          <div class="mt-5">
+
+            <p class="text-gray-600">Languages</p>
+
+            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
+                <p class="skill-chip">Python</p>
+                <p class="skill-chip">C</p>
+                <p class="skill-chip">C++</p>
+                <p class="skill-chip">HTML</p>
+               <p class="skill-chip">CSS</p>
+                <p class="skill-chip">JavaScript</p>
+                 <p class="skill-chip">Java</p>
+               <p class="skill-chip">C#</p>
+                <p class="skill-chip">TypeScript</p>
+                <p class="skill-chip">R</p>
+                <p class="skill-chip">SQL</p>
+               <p class="skill-chip">MongoDB</p>
+                <p class="skill-chip">Matlab</p>
+
+            </div>
+
+          </div>
+
+           <div class="mt-5">
+
+            <p class="text-gray-600">Framework & Libraries</p>
+
+            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
+                <p class="skill-chip">React</p>
+                <p class="skill-chip">React Native</p>
+                <p class="skill-chip">Tailwind</p>
+                <p class="skill-chip">Flask</p>
+                <p class="skill-chip">Dash</p>
+                <p class="skill-chip">Numpy & Pandas</p>
+
+            </div>
+
+          </div>
+
+           <div class="mt-5">
+
+            <p class="text-gray-600">Tools & Platforms</p>
+
+            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
+                <p class="skill-chip">VS Code</p>
+                <p class="skill-chip">RStudio</p>
+                <p class="skill-chip">Github</p>
+
+            </div>
+
+          </div>
+
+          <div class="mt-5">
+
+            <p class="text-gray-600">Other</p>
+
+            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
+                <p class="skill-chip">English & Spanish</p>
+
+
+            </div>
+
+          </div>
+
+      </section>
+
+
+      <!-- Education Section -->
+      <section id="education">
+          <h2 class="section-title">Education</h2>
+
+          <!-- Education Cards -->
+          <div class="education-entry mt-5">
+            <div class="education-heading flex flex-row items-center justify-between">
+              <p class="text-xl">Master of Science in Computer Science</p>
+              <p class="text-gray-400">Aug 2023 - Dec 2025</p>
+            </div>
+            <p class="mt-2 text-lg text-gray-400">University of Puerto Rico, Rio Piedras Campus</p>
+            <p class="mt-2 text-gray-500">Master Project: An Integrated Tool for Visualization and Analysis of Boolean Networks Representations of Gene Regulatory Networks</p>
+            <p class="mt-2 text-gray-500">Graduated (GPA: 4.0)</p>
+
+          </div>
+
+          <div class="education-entry mt-5">
+            <div class="education-heading flex flex-row items-center justify-between">
+              <p class="text-xl">Bachelor of Science in Computer Science</p>
+              <p class="text-gray-400">Aug 2018 - May 2023</p>
+            </div>
+            <p class="mt-2 text-lg text-gray-400">University of Puerto Rico, Rio Piedras Campus</p>
+            <p class="mt-2 text-gray-500">Graduated (GPA: 3.67)</p>
+
+          </div>
+
+
+      </section>
+
+    </section>
        <!-- Experiences Section -->
-      <div id="experience" class="mt-16">
-          <p class="text-xl font-semibold text-gray-500">Experience</p>
+      <section id="experience" class="page-view" role="tabpanel" aria-labelledby="tab-experience" hidden>
+          <h2 class="section-title">Experience</h2>
 
           <!-- Experiences Cards -->
-          <div class="mt-5">
-            <div class="flex flex-row items-center justify-between">
+          <div class="experience-entry mt-5">
+            <div class="experience-heading flex flex-row items-center justify-between">
               <p class="text-xl">Research/Teaching Assistant</p>
               <p class="text-gray-400">Aug 2023 - Dec 2025</p>
             </div>
@@ -140,8 +259,8 @@
 
           </div>
 
-          <div class="mt-5">
-            <div class="flex flex-row items-center justify-between">
+          <div class="experience-entry mt-5">
+            <div class="experience-heading flex flex-row items-center justify-between">
               <p class="text-xl">Biostatistics Research Intern</p>
               <p class="text-gray-400">June 2023 - July 2023</p>
             </div>
@@ -167,8 +286,8 @@
 
           </div>
 
-          <div class="mt-5">
-            <div class="flex flex-row items-center justify-between">
+          <div class="experience-entry mt-5">
+            <div class="experience-heading flex flex-row items-center justify-between">
               <p class="text-xl">Software Engineer</p>
               <p class="text-gray-400">Mar 2023 - June 2023</p>
             </div>
@@ -190,8 +309,8 @@
 
           </div>
 
-          <div class="mt-5">
-            <div class="flex flex-row items-center justify-between">
+          <div class="experience-entry mt-5">
+            <div class="experience-heading flex flex-row items-center justify-between">
               <p class="text-xl">Biostatistics Research Intern</p>
               <p class="text-gray-400">June 2022 - July 2022</p>
             </div>
@@ -214,118 +333,17 @@
 
           </div>
 
-      </div>
-
-      <!-- Education Section -->
-      <div id="education" class="mt-16">
-          <p class="text-xl font-semibold text-gray-500">Education</p>
-
-          <!-- Education Cards -->
-          <div class="mt-5">
-            <div class="flex flex-row items-center justify-between">
-              <p class="text-xl">Master of Science in Computer Science</p>
-              <p class="text-gray-400">Aug 2023 - Dec 2025</p>
-            </div>
-            <p class="mt-2 text-lg text-gray-400">University of Puerto Rico, Rio Piedras Campus</p>
-            <p class="mt-2 text-gray-500">Master Project: An Integrated Tool for Visualization and Analysis of Boolean Networks Representations of Gene Regulatory Networks</p>
-            <p class="mt-2 text-gray-500">Graduated (GPA: 4.0)</p>
-
-          </div>
-
-          <div class="mt-5">
-            <div class="flex flex-row items-center justify-between">
-              <p class="text-xl">Bachelor of Science in Computer Science</p>
-              <p class="text-gray-400">Aug 2018 - May 2023</p>
-            </div>
-            <p class="mt-2 text-lg text-gray-400">University of Puerto Rico, Rio Piedras Campus</p>
-            <p class="mt-2 text-gray-500">Graduated (GPA: 3.67)</p>
-
-          </div>
-
-
-      </div>
-
-       <!-- Skills/Tools Section -->
-      <div id="skills" class="mt-16">
-          <p class="text-xl font-semibold text-gray-500">Skills & Tools</p>
-
-          <!-- Skill/Tools Cards -->
-          <div class="mt-5">
-           
-            <p class="text-gray-600">Languages</p>
-            
-            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Python</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">C</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">C++</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">HTML</p>
-               <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">CSS</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">JavaScript</p>
-                 <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Java</p>
-               <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">C#</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">TypeScript</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">R</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">SQL</p>
-               <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">MongoDB</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Matlab</p>
-                
-            </div>
-
-          </div>
-
-           <div class="mt-5">
-           
-            <p class="text-gray-600">Framework & Libraries</p>
-            
-            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">React</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">React Native</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Tailwind</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Flask</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Dash</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Numpy & Pandas</p>
-                 
-            </div>
-
-          </div>
-
-           <div class="mt-5">
-           
-            <p class="text-gray-600">Tools & Platforms</p>
-            
-            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">VS Code</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">RStudio</p>
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">Github</p>
-                
-            </div>
-
-          </div>
-
-          <div class="mt-5">
-           
-            <p class="text-gray-600">Other</p>
-            
-            <div class="flex flex-row flex-wrap mt-2 gap-y-2 gap-x-2">
-                <p class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm">English & Spanish</p>
-               
-                
-            </div>
-
-          </div>
-
-      </div>
-
+    </section>
 
        <!-- Projects Section -->
-      <div id="projects" class="mt-16">
-          <p class="text-xl font-semibold text-gray-500">Projects</p>
+      <section id="projects" class="page-view" role="tabpanel" aria-labelledby="tab-projects" hidden>
+          <h2 class="section-title">Projects</h2>
 
           <!-- Projects Cards -->
-          <div class="flex flex-row flex-wrap justify-between">
+          <div class="project-grid mt-5">
 
-              <div class="mt-5 rounded-lg w-full lg:w-[48%] border-2 bg-white border-gray-100 transition-transform duration-300 hover:-translate-y-2">
-                <div class="flex flex-wrap justify-center gap-2 bg-[#f2f2f2] overflow-hidden">
+              <div class="project-card">
+                <div class="project-image">
                   <img src="img/monivue1.png" class="w-[30%] max-w-[126px] h-auto object-contain"/>
                   <img src="img/monivue2.png" class="w-[30%] max-w-[126px] h-auto object-contain"/>
                   <img src="img/monivue3.png" class="w-[30%] max-w-[126px] h-auto object-contain"/>
@@ -335,28 +353,28 @@
 
                  <p class="text-gray-400 mb-2 mt-2">Available:</p>
                   <div class="flex flex-row">
-                     
-                      <a href="https://monivue.michaelterrefortes.com/" class="mr-3 rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">Website</a>
-                      <a href="https://apps.apple.com/us/app/monivue/id6767728062" class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">App Store</a>
+
+                      <a href="https://monivue.michaelterrefortes.com/" class="project-link mr-3">Website</a>
+                      <a href="https://apps.apple.com/us/app/monivue/id6767728062" class="project-link">App Store</a>
                   </div>
                   <p class="text-gray-400 mt-2">A budget manager mobile and web app to track spending, bills, and credit card debt.</p>
                   <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">TypeScript</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">JavaScript</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Express</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Node.js</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Supabase Auth</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">PostgreSQL</p>
-                      
-                      
+                      <p class="skill-chip">React</p>
+                      <p class="skill-chip">React Native</p>
+                      <p class="skill-chip">TypeScript</p>
+                      <p class="skill-chip">JavaScript</p>
+                      <p class="skill-chip">Express</p>
+                      <p class="skill-chip">Node.js</p>
+                      <p class="skill-chip">Supabase Auth</p>
+                      <p class="skill-chip">PostgreSQL</p>
+
+
                   </div>
                 </div>
               </div>
 
-              <div class="mt-5 rounded-lg w-full lg:w-[48%] border-2 bg-white border-gray-100 transition-transform duration-300 hover:-translate-y-2">
-                <div class="flex flex-wrap justify-center gap-2 bg-[#f2f2f2] overflow-hidden">
+              <div class="project-card">
+                <div class="project-image">
                   <img src="img/bookview1.png" class="w-[30%] max-w-[126px] h-auto object-contain"/>
                   <img src="img/bookview2.png" class="w-[30%] max-w-[126px] h-auto object-contain"/>
                   <img src="img/bookview3.png" class="w-[30%] max-w-[126px] h-auto object-contain"/>
@@ -365,31 +383,31 @@
                   <p class="text-lg">BookView - Personal Library</p>
                   <p class="text-gray-400 mb-2 mt-2">Available:</p>
                   <div class="flex flex-row">
-                     
-                      <a href="https://bookview.michaelterrefortes.com/" class="mr-3 rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">Website</a>
-                       <a href="https://apps.apple.com/us/app/bookview-personal-library/id6776275280"  class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">App Store</a>
-                      
+
+                      <a href="https://bookview.michaelterrefortes.com/" class="project-link mr-3">Website</a>
+                       <a href="https://apps.apple.com/us/app/bookview-personal-library/id6776275280"  class="project-link">App Store</a>
+
                   </div>
 
                   <p class="text-gray-400 mt-2">A book app to track bookshelfs and current reading. </p>
-           
+
                   <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
-                     
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">TypeScript</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">JavaScript</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Express</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Node.js</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Supabase Auth</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">PostgreSQL</p>
-                   
+
+                      <p class="skill-chip">React</p>
+                      <p class="skill-chip">React Native</p>
+                      <p class="skill-chip">TypeScript</p>
+                      <p class="skill-chip">JavaScript</p>
+                      <p class="skill-chip">Express</p>
+                      <p class="skill-chip">Node.js</p>
+                      <p class="skill-chip">Supabase Auth</p>
+                      <p class="skill-chip">PostgreSQL</p>
+
                   </div>
                 </div>
               </div>
 
-              <div class="mt-5 rounded-lg w-full lg:w-[48%] border-2 bg-white border-gray-100 transition-transform duration-300 hover:-translate-y-2">
-                <div class="flex flex-wrap justify-center gap-2 bg-[#f2f2f2] overflow-hidden">
+              <div class="project-card">
+                <div class="project-image">
                   <img src="img/patternmatch1.PNG" class="w-[30%] max-w-[126px] h-auto object-contain"/>
                   <img src="img/patternmatch2.PNG" class="w-[30%] max-w-[126px] h-auto object-contain"/>
                   <img src="img/patternmatch3.PNG" class="w-[30%] max-w-[126px] h-auto object-contain"/>
@@ -398,230 +416,151 @@
                   <p class="text-lg">PatternMatch: Memory Game</p>
                   <p class="text-gray-400 mb-2 mt-2">Available:</p>
                   <div class="flex flex-row">
-                     
-                      <a href="https://apps.apple.com/us/app/patternmatch-memory-game/id6769762690" class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">App Store</a>
-                      
+
+                      <a href="https://apps.apple.com/us/app/patternmatch-memory-game/id6769762690" class="project-link">App Store</a>
+
                   </div>
 
                   <p class="text-gray-400 mt-2">PatternMatch: Memory Game is a simple and addictive memory puzzle where you test and improve your pattern recognition skills by repeating increasingly complex sequences.</p>
-           
-                  <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
-                     
 
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">TypeScript</p>
-                  
-                   
+                  <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
+
+
+                      <p class="skill-chip">React Native</p>
+                      <p class="skill-chip">TypeScript</p>
+
+
                   </div>
                 </div>
               </div>
 
-              <div class="mt-5 rounded-lg w-full lg:w-[48%] border-2 bg-white border-gray-100 transition-transform duration-300 hover:-translate-y-2">
-                <div class="flex flex-wrap justify-center gap-2 bg-[#f2f2f2] overflow-hidden">
+              <div class="project-card">
+                <div class="project-image">
                   <img src="img/vibex.jpg" class="w-full h-auto object-contain rounded-lg"/>
                 </div>
                 <div class="p-5">
                   <p class="text-lg">ViBEx</p>
                   <p class="text-gray-400 mb-2 mt-2">Available:</p>
                   <div class="flex flex-row">
-                     
-                      <a href="https://fury.hpcf.upr.edu/vibex/" class="rounded-lg bg-[#ececf0] py-1.5 px-3 text-sm hover:bg-gray-300">Website</a>
-                      
+
+                      <a href="https://fury.hpcf.upr.edu/vibex/" class="project-link">Website</a>
+
                   </div>
                   <p class="text-gray-400 mt-2">Master Project Web Application for the Analysis and Visualization of Boolean Networks of Gene Expressions.
-                    
+
                   </p>
-                  
+
                   <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">Python</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">C</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Dash</p>
-                      
-    
+                      <p class="skill-chip">Python</p>
+                      <p class="skill-chip">C</p>
+                      <p class="skill-chip">Dash</p>
+
+
                   </div>
                 </div>
               </div>
 
-              <div class="mt-5 rounded-lg w-full lg:w-[48%] border-2 bg-white border-gray-100 transition-transform duration-300 hover:-translate-y-2">
-                <div class="flex flex-wrap justify-center gap-2 bg-[#f2f2f2] overflow-hidden">
+              <div class="project-card">
+                <div class="project-image">
                   <img src="img/siemprevivas.png" class="w-full h-auto object-contain rounded-lg"/>
                 </div>
                 <div class="p-5">
                   <p class="text-lg">Siempre Vivas</p>
                   <p class="text-gray-400 mt-2">A modern interactive website for Siempre Vivas Metro. Developed in collaboration with other collegues.</p>
                   <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">HTML</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">Python</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">CSS</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">MongoDB</p> 
+                      <p class="skill-chip">HTML</p>
+                      <p class="skill-chip">Python</p>
+                      <p class="skill-chip">CSS</p>
+                      <p class="skill-chip">MongoDB</p>
                   </div>
                 </div>
               </div>
 
-              <div class="mt-5 rounded-lg w-full lg:w-[48%] border-2 bg-white border-gray-100 transition-transform duration-300 hover:-translate-y-2">
-               <div class="flex flex-wrap justify-center gap-2 bg-[#f2f2f2] overflow-hidden">
+              <div class="project-card">
+               <div class="project-image">
                   <img src="img/bussapp.png" class="w-[30%] max-w-[126px] h-auto object-contain"/>
                 </div>
                 <div class="p-5">
                   <p class="text-lg">Trolley ETA at UPRRP</p>
                   <p class="text-gray-400 mt-2">A mobile application for bus tracking in UPRRP campus. Developed in collaboration with other collegues.</p>
                   <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
-                   
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">Python</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">JavaScript</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">SQL</p>
-     
+
+                      <p class="skill-chip">React Native</p>
+                      <p class="skill-chip">Python</p>
+                      <p class="skill-chip">JavaScript</p>
+                      <p class="skill-chip">SQL</p>
+
                   </div>
                 </div>
               </div>
 
 
-              <div class="mt-5 rounded-lg w-full lg:w-[48%] border-2 bg-white border-gray-100 transition-transform duration-300 hover:-translate-y-2">
-                <div class="flex flex-wrap justify-center gap-2 bg-[#f2f2f2] overflow-hidden">
+              <div class="project-card">
+                <div class="project-image">
                   <img src="img/aco.jpg" class="w-[30%] max-w-[126px] h-auto object-contain"/>
                 </div>
                 <div class="p-5">
                   <p class="text-lg">ACO</p>
                   <p class="text-gray-400 mt-2">A mobile application for El Puente non-profit organization for reporting climate law violations in Puerto Rico. Developed in collaboration with other collegues.</p>
                   <div class="flex flex-row flex-wrap mt-5 gap-y-2 gap-x-2">
-                   
-                      <p class="rounded-md bg-[#ececf0] py-1 px-2 text-xs">React Native</p>     
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">JavaScript</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">Python</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">PostgreSQL</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">HTML</p>
-                      <p class="rounded-md bg-[#ececf0]  py-1 px-2 text-xs">CSS</p>
-                      
-                      
+
+                      <p class="skill-chip">React Native</p>
+                      <p class="skill-chip">JavaScript</p>
+                      <p class="skill-chip">Python</p>
+                      <p class="skill-chip">PostgreSQL</p>
+                      <p class="skill-chip">HTML</p>
+                      <p class="skill-chip">CSS</p>
+
+
                   </div>
                 </div>
               </div>
 
-              
-
           </div>
+        </section>
 
 
-      </div>
-
-    </div>
-
-    <div id="contactDiv" class="hidden lg:w-[50%] md:w-[70%] px-5">
-
-       <!-- Name Section -->
-      <div class="pt-5 pb-5 flex flex-row items-center">
-
-        <img src="img/me.jpeg" 
-          style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; object-position: center;" 
-          alt="Personal Photo" />
-
-
-          <h1 class="font-semibold text-2xl ml-3">
-          Michael Terrefortes Rosado
-          </h1>
-          <button type="button" class="theme-toggle ml-auto rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium hover:bg-gray-100 dark-border dark-hover" aria-label="Switch to dark mode" aria-pressed="false">
-            <span class="themeIcon" aria-hidden="true">☾</span>
-            <span class="themeLabel">Dark mode</span>
-          </button>
-
-      </div>
-
-      <!-- Nav Section -->
-      <div>
-          <button onclick="disableContact()" class="pb-5 text-gray-400 font-semibold hover:text-black mr-5">Profile</button>
-          <button class="border-b-2 border-black pb-5 font-semibold ">Contact</button>
-      </div>
-
-      <hr>
-
-      <!-- Get in Touch Section -->
-
-      <div class="mt-8">
-        <p class="text-xl font-semibold mb-12 text-gray-500">Get in Touch</p>
-
-        <a href="mailto:michaelterrefortes@gmail.com">
-        <div class="mt-7 w-full border-2 flex flex-row items-center border-gray-100 rounded-xl p-5 hover:bg-[#ececf0]">
-         
-          <div class="bg-[#ececf0] p-3 rounded-full mr-5">
-            <img  style="width: 20px; height: 20px;" 
-          src="/img/icons/email-svgrepo-com.svg"/>
-         </div>
-
-          <div>
-            <p class="text-gray-500">Email</p>
-            <p>michaelterrefortes@gmail.com</p>
-          </div>
+        <section id="contact" class="page-view" role="tabpanel" aria-labelledby="tab-contact" hidden>
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="mt-6 space-y-4">
+          <a href="mailto:michaelterrefortes@gmail.com" class="contact-card">
+            <span class="contact-icon"><img src="/img/icons/email-svgrepo-com.svg" alt="" /></span>
+            <span><span class="contact-label">Email</span><span>michaelterrefortes@gmail.com</span></span>
+          </a>
+          <a href="https://github.com/michaelterrefortes" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-icon"><img src="/img/icons/github-svgrepo-com.svg" alt="" /></span>
+            <span><span class="contact-label">GitHub</span><span>github.com/michaelterrefortes</span></span>
+          </a>
+          <a href="https://linkedin.com/in/michael-h-terrefortes-rosado" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="contact-icon"><img src="/img/icons/linkedin-svgrepo-com.svg" alt="" /></span>
+            <span><span class="contact-label">LinkedIn</span><span>linkedin.com/in/michael-h-terrefortes-rosado</span></span>
+          </a>
         </div>
-        </a>
-
-
-        <a href="https://github.com/michaelterrefortes">
-        <div class="mt-7 w-full border-2 flex flex-row items-center border-gray-100 rounded-xl p-5 hover:bg-[#ececf0]">
-           <div class="bg-[#ececf0] p-3 rounded-full mr-5">
-              <img  style="width: 20px; height: 20px;" 
-            src="/img/icons/github-svgrepo-com.svg"/>
-          </div>
-          <div>
-            <p class="text-gray-500">GitHub</p>
-            <p>github.com/michaelterrefortes</p>
-          </div>
-        </div>
-        </a>
-
-
-        <a href="https://linkedin.com/in/michael-h-terrefortes-rosado">
-        <div class="mt-7 w-full border-2 flex flex-row items-center  border-gray-100 rounded-xl p-5 hover:bg-[#ececf0]">
-           <div class="bg-[#ececf0] p-3 rounded-full mr-5">
-              <img  style="width: 20px; height: 20px;" 
-            src="/img/icons/linkedin-svgrepo-com.svg"/>
-          </div>
-          <div>
-            <p class="text-gray-500">LinkedIn</p>
-            <p>linkedin.com/in/michael-h-terrefortes-rosado</p>
-          </div>
-        </div>
-        </a>
-
-        
-      </div>
-
-
-    </div>
-
-
-  </body>
+      </section>
+  </main>
   <script>
- 
-    function disableContact() {
-        const div = document.getElementById('contactDiv');
-        const div2 = document.getElementById('profileDiv');
-        div.classList.toggle('hidden');
-        div2.classList.toggle('hidden');
-    }
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    const views = [...document.querySelectorAll('[role="tabpanel"]')];
+    tabs.forEach((tab) => tab.addEventListener('click', () => {
+      tabs.forEach((item) => item.setAttribute('aria-selected', String(item === tab)));
+      views.forEach((view) => { view.hidden = view.id !== tab.dataset.view; });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }));
 
-    function disableProfile() {
-        const div = document.getElementById('profileDiv');
-        const div2 = document.getElementById('contactDiv');
-        div.classList.toggle('hidden');
-        div2.classList.toggle('hidden');
+    const themeToggle = document.getElementById('theme-toggle');
+    function syncThemeToggle() {
+      const isDark = document.documentElement.classList.contains('dark');
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      document.getElementById('theme-icon').textContent = isDark ? '☀' : '☾';
+      document.getElementById('theme-label').textContent = isDark ? 'Light mode' : 'Dark mode';
     }
-
-    const themeButtons = document.querySelectorAll('.theme-toggle');
-    function updateThemeButtons(isDark) {
-      themeButtons.forEach((button) => {
-        button.setAttribute('aria-pressed', String(isDark));
-        button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        button.querySelector('.themeIcon, #themeIcon').textContent = isDark ? '☀' : '☾';
-        button.querySelector('.themeLabel, #themeLabel').textContent = isDark ? 'Light mode' : 'Dark mode';
-      });
-    }
-    updateThemeButtons(document.documentElement.classList.contains('dark'));
-    themeButtons.forEach((button) => button.addEventListener('click', () => {
+    syncThemeToggle();
+    themeToggle.addEventListener('click', () => {
       const isDark = document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateThemeButtons(isDark);
-    }));
-    
+      syncThemeToggle();
+    });
   </script>
+</body>
 </html>
