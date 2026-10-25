@@ -3,11 +3,38 @@
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
  
   <title>Michael Terrefortes Rosado</title>
   <!-- Load Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+  <style>
+    html { color-scheme: light; }
+    html.dark { color-scheme: dark; }
+    body { background-color: #fff; color: #111827; transition: background-color 180ms ease, color 180ms ease; }
+    html.dark body { background-color: #080808; color: #f3f3f3; }
+    html.dark .dark-surface { background-color: #151515 !important; }
+    html.dark .dark-border { border-color: #292929 !important; }
+    html.dark .dark-text { color: #d1d5db !important; }
+    html.dark .dark-muted { color: #9ca3af !important; }
+    html.dark .dark-hover:hover { background-color: #292929 !important; }
+    html.dark .bg-white { background-color: #151515 !important; }
+    html.dark .bg-\[\#ececf0\], html.dark .bg-\[\#f2f2f2\] { background-color: #222 !important; }
+    html.dark .border-gray-100, html.dark .border-gray-200 { border-color: #292929 !important; }
+    html.dark .border-black { border-color: #e5e5e5 !important; }
+    html.dark .text-black, html.dark .hover\:text-black:hover { color: #f9fafb !important; }
+    html.dark .text-gray-400, html.dark .text-gray-500, html.dark .text-gray-600 { color: #9ca3af !important; }
+    html.dark .hover\:bg-gray-300:hover { background-color: #333 !important; }
+    @media (prefers-reduced-motion: reduce) { body { transition: none; } }
+  </style>
   
   </head>
   <body class="flex justify-center min-h-screen pb-5">
@@ -28,6 +55,10 @@
           <h1 class="font-semibold text-2xl ml-3">
           Michael Terrefortes Rosado
           </h1>
+          <button id="themeToggle" type="button" class="theme-toggle ml-auto rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium hover:bg-gray-100 dark-border dark-hover" aria-label="Switch to dark mode" aria-pressed="false">
+            <span id="themeIcon" aria-hidden="true">☾</span>
+            <span id="themeLabel">Dark mode</span>
+          </button>
 
       </div>
 
@@ -489,6 +520,10 @@
           <h1 class="font-semibold text-2xl ml-3">
           Michael Terrefortes Rosado
           </h1>
+          <button type="button" class="theme-toggle ml-auto rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium hover:bg-gray-100 dark-border dark-hover" aria-label="Switch to dark mode" aria-pressed="false">
+            <span class="themeIcon" aria-hidden="true">☾</span>
+            <span class="themeLabel">Dark mode</span>
+          </button>
 
       </div>
 
@@ -571,6 +606,22 @@
         div.classList.toggle('hidden');
         div2.classList.toggle('hidden');
     }
+
+    const themeButtons = document.querySelectorAll('.theme-toggle');
+    function updateThemeButtons(isDark) {
+      themeButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(isDark));
+        button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        button.querySelector('.themeIcon, #themeIcon').textContent = isDark ? '☀' : '☾';
+        button.querySelector('.themeLabel, #themeLabel').textContent = isDark ? 'Light mode' : 'Dark mode';
+      });
+    }
+    updateThemeButtons(document.documentElement.classList.contains('dark'));
+    themeButtons.forEach((button) => button.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeButtons(isDark);
+    }));
     
   </script>
 </html>
